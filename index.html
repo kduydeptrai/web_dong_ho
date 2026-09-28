@@ -1656,36 +1656,6 @@ footer::after {
 .footer-bottom-links a:hover { color: var(--gold); }
 .footer-bottom-links a:hover::after { width: 100%; }
 
-/* ================== BACK TO TOP ================== */
-#backToTop {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 46px;
-  height: 46px;
-  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-  color: var(--dark);
-  border: none;
-  border-radius: 50%;
-  font-size: 1.3rem;
-  cursor: pointer;
-  box-shadow: 0 8px 25px rgba(212,175,55,0.4);
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.3s;
-  z-index: 900;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-}
-
-#backToTop.show { opacity: 1; pointer-events: auto; }
-
-#backToTop:hover {
-  transform: translateY(-5px) scale(1.1);
-  box-shadow: 0 12px 30px rgba(212,175,55,0.55);
-}
 
 /* ================== RESPONSIVE ================== */
 @media (max-width: 992px) {
@@ -1889,7 +1859,6 @@ footer::after {
   .brand-card .brand-desc { font-size: 0.75rem; line-height: 1.5; }
   .brand-card .brand-count { font-size: 0.68rem; padding: 0.28rem 0.6rem; }
 
-  #backToTop { bottom: 20px; right: 20px; width: 42px; height: 42px; }
 }
 
 /* MOBILE: 2 THẺ / HÀNG */
@@ -2074,8 +2043,6 @@ footer::after {
 <!-- ================== NỘI DUNG SPA ================== -->
 <main id="app"></main>
 
-<!-- ================== BACK TO TOP ================== -->
-<button id="backToTop" aria-label="Lên đầu trang">↑</button>
 
 <!-- ================== MODAL ĐẶT HÀNG ================== -->
 <div id="orderModal" class="modal">
@@ -2943,21 +2910,6 @@ const OrderModal = {
     this.close();
   }
 };
-
-/* ============================================================
-   6. BACK TO TOP
-   ============================================================ */
-function updateBackToTop() {
-  const btn = document.getElementById('backToTop');
-  if (window.scrollY > 400) btn.classList.add('show');
-  else btn.classList.remove('show');
-}
-
-window.addEventListener('scroll', updateBackToTop);
-
-document.getElementById('backToTop').addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
 
 /* ============================================================
    7. EVENT DELEGATION (nút đặt hàng)
