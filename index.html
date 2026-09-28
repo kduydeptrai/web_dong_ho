@@ -1,0 +1,2815 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HMB Agency - Cửa Hàng Đồng Hồ Cao Cấp</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+/* ================== RESET & BASE ================== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --gold: #d4af37;
+  --gold-light: #f4d76b;
+  --gold-dark: #b8941f;
+  --dark: #1a1a1a;
+  --darker: #0d0d0d;
+  --gray: #666;
+  --light: #f9f9f9;
+  --white: #fff;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+main { flex: 1; min-height: 60vh; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+a { color: inherit; }
+
+/* Scrollbar đẹp */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--gold), var(--gold-dark));
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--gold-dark); }
+
+/* ================== HEADER ================== */
+header {
+  background: rgba(26,26,26,0.97);
+  backdrop-filter: blur(10px);
+  color: white;
+  padding: 0.9rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.15);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo { text-decoration: none; display: flex; align-items: center; gap: 8px; }
+
+.logo h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.logo h1::before {
+  content: '⌚';
+  margin-right: 6px;
+  font-size: 1.3rem;
+}
+
+/* --- Nav desktop --- */
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 1.8rem;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+  padding: 0.4rem 0;
+  position: relative;
+  font-size: 0.95rem;
+}
+
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+
+nav ul li a:hover { color: var(--gold); }
+nav ul li a:hover::after { width: 100%; }
+
+nav ul li a.active { color: var(--gold); }
+nav ul li a.active::after { width: 100%; }
+
+/* --- Hamburger button (ẩn mặc định) --- */
+.hamburger {
+  display: none;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 1.5px solid rgba(212,175,55,0.35);
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  transition: all 0.3s;
+  z-index: 1100;
+}
+
+.hamburger:hover {
+  border-color: var(--gold);
+  background: rgba(212,175,55,0.08);
+}
+
+.hamburger span {
+  display: block;
+  position: absolute;
+  left: 50%;
+  width: 20px;
+  height: 2px;
+  background: var(--gold);
+  border-radius: 2px;
+  transform: translateX(-50%);
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hamburger span:nth-child(1) { top: 12px; }
+.hamburger span:nth-child(2) { top: 19px; }
+.hamburger span:nth-child(3) { top: 26px; }
+
+/* Khi mở menu: biến thành dấu X */
+.hamburger.active span:nth-child(1) {
+  top: 19px;
+  transform: translateX(-50%) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-50%) scaleX(0);
+}
+.hamburger.active span:nth-child(3) {
+  top: 19px;
+  transform: translateX(-50%) rotate(-45deg);
+}
+
+/* ================== HERO ================== */
+.hero {
+  position: relative;
+  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.75)),
+              url('https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=1600') center/cover fixed;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 40%, rgba(212,175,55,0.15), transparent 60%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 0 16px;
+  animation: fadeUp 1.2s ease-out;
+}
+
+.hero-content::before {
+  content: '✦ LUXURY WATCH ✦';
+  display: block;
+  font-size: 0.85rem;
+  color: var(--gold);
+  letter-spacing: 6px;
+  margin-bottom: 1.2rem;
+  font-weight: 500;
+  animation: fadeIn 1.5s ease-out;
+}
+
+.hero-content h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 4px 20px rgba(0,0,0,0.6);
+  letter-spacing: 1px;
+  line-height: 1.2;
+}
+
+.hero-content h2 span { color: var(--gold); font-style: italic; }
+
+.hero-content p {
+  font-size: 1.2rem;
+  color: #e5e5e5;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ================== BUTTONS ================== */
+.btn-primary {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: var(--dark);
+  padding: 0.85rem 1.8rem;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 0; height: 0;
+  background: rgba(255,255,255,0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.5s, height 0.5s;
+}
+
+.btn-primary:hover::before { width: 300px; height: 300px; }
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.45);
+}
+
+.btn-large {
+  padding: 1rem 2.2rem;
+  font-size: 1.05rem;
+  width: 100%;
+  border-radius: 8px;
+}
+
+/* ================== INTRO STRIP ================== */
+.intro-strip {
+  background: linear-gradient(135deg, var(--dark), #2a2a2a);
+  padding: 3rem 0;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.intro-strip::before {
+  content: '';
+  position: absolute;
+  top: -50%; right: -10%;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(212,175,55,0.08), transparent 70%);
+  pointer-events: none;
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.intro-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  transition: transform 0.3s;
+}
+
+.intro-item:hover { transform: translateX(5px); }
+
+.intro-icon {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: var(--dark);
+  box-shadow: 0 5px 15px rgba(212,175,55,0.3);
+}
+
+.intro-item h4 {
+  color: var(--gold);
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.5px;
+}
+
+.intro-item p {
+  color: #ccc;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+/* ================== PRODUCTS SECTION ================== */
+.products-section {
+  padding: 3rem 0 4rem;
+  background: #fff;
+  position: relative;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.section-header .eyebrow {
+  display: inline-block;
+  color: var(--gold);
+  font-size: 0.85rem;
+  letter-spacing: 4px;
+  font-weight: 500;
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+  position: relative;
+  padding: 0 40px;
+}
+
+.section-header .eyebrow::before,
+.section-header .eyebrow::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 30px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.section-header .eyebrow::before { left: 0; }
+.section-header .eyebrow::after { right: 0; }
+
+.section-title, .page-title {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  margin: 0 0 1rem;
+  color: var(--dark);
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.section-title::after, .page-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+/* Filter tabs */
+.filter-bar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 2rem 0 1rem;
+}
+
+.filter-btn {
+  padding: 0.55rem 1.3rem;
+  border: 1.5px solid #e5e5e5;
+  background: #fff;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--gray);
+  transition: all 0.3s;
+}
+
+.filter-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: translateY(-2px);
+}
+
+.filter-btn.active {
+  background: var(--dark);
+  border-color: var(--dark);
+  color: var(--gold);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+/* Products grid */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem 0 2rem;
+}
+
+.product-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #f0f0f0;
+  position: relative;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+  border-color: rgba(212,175,55,0.3);
+}
+
+.product-card a { text-decoration: none; display: block; position: relative; overflow: hidden; }
+
+.product-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  background: #f5f5f5;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-image { transform: scale(1.08); }
+
+.product-card .badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: linear-gradient(135deg, #ff4757, #ff6b81);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.3rem 0.7rem;
+  border-radius: 20px;
+  letter-spacing: 1px;
+  z-index: 2;
+  box-shadow: 0 3px 10px rgba(255,71,87,0.4);
+}
+
+.product-card .badge.new {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: var(--dark);
+  box-shadow: 0 3px 10px rgba(212,175,55,0.4);
+}
+
+.product-info {
+  padding: 1rem 1.1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.product-info h3 {
+  font-size: 0.98rem;
+  margin-bottom: 0.5rem;
+  color: var(--dark);
+  line-height: 1.35;
+  min-height: 2.7em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-weight: 500;
+}
+
+.product-price {
+  font-size: 1.15rem;
+  color: var(--gold);
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  margin-top: auto;
+  font-family: 'Playfair Display', serif;
+}
+
+.btn-order {
+  display: block;
+  width: 100%;
+  padding: 0.65rem;
+  background: var(--dark);
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.3s;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  font-size: 0.88rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-order::before {
+  content: '→';
+  position: absolute;
+  right: 15px;
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.btn-order:hover {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: var(--dark);
+  padding-right: 2rem;
+}
+
+.btn-order:hover::before {
+  opacity: 1;
+  right: 10px;
+}
+
+/* ================== BRANDS PAGE ================== */
+.brands-page {
+  background: linear-gradient(180deg, #fafafa 0%, #fff 100%);
+  padding-bottom: 4rem;
+}
+
+.brands-hero {
+  position: relative;
+  height: 320px;
+  background: linear-gradient(135deg, rgba(26,26,26,0.88) 0%, rgba(26,26,26,0.65) 100%),
+              url('https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?w=1600&q=80') center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+}
+
+.brands-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(212,175,55,0.15), transparent 60%);
+  pointer-events: none;
+}
+
+.brands-hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 0 20px;
+  animation: fadeUp 1s ease-out;
+}
+
+.brands-hero-content .eyebrow {
+  display: inline-block;
+  color: var(--gold);
+  font-size: 0.85rem;
+  letter-spacing: 4px;
+  margin-bottom: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.brands-hero-content h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  color: #fff;
+  margin-bottom: 0.8rem;
+  letter-spacing: 1px;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.brands-hero-content h1 span { color: var(--gold); font-style: italic; }
+
+.brands-hero-content p {
+  font-size: 1.1rem;
+  color: #ddd;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.brands-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: -50px;
+  position: relative;
+  z-index: 2;
+}
+
+.brand-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  border: 1px solid #f0f0f0;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+
+.brand-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.brand-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px rgba(212,175,55,0.18);
+  border-color: rgba(212,175,55,0.35);
+}
+
+.brand-card:hover::before { transform: scaleX(1); }
+
+.brand-logo-wrap {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 1.2rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fafafa, #f0f0f0);
+  border: 2px solid rgba(212,175,55,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+.brand-card:hover .brand-logo-wrap {
+  border-color: var(--gold);
+  box-shadow: 0 8px 25px rgba(212,175,55,0.35);
+  transform: scale(1.08);
+}
+
+.brand-logo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 12px;
+}
+
+.brand-initial {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: -1px;
+}
+
+.brand-card:hover .brand-initial {
+  transform: scale(1.15) rotate(-5deg);
+  transition: transform 0.4s ease;
+}
+
+.brand-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  color: var(--dark);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+.brand-card .brand-origin {
+  color: var(--gray);
+  font-size: 0.85rem;
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.brand-card .brand-desc {
+  color: #666;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.brand-card .brand-count {
+  display: inline-block;
+  padding: 0.35rem 0.9rem;
+  background: rgba(212,175,55,0.1);
+  color: var(--gold-dark);
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s;
+}
+
+.brand-card:hover .brand-count {
+  background: var(--gold);
+  color: var(--dark);
+}
+
+/* ================== PRODUCT DETAIL ================== */
+.product-detail { padding: 2rem 0 4rem; }
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 1.5rem;
+  color: var(--gray);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s;
+  padding: 0.4rem 0.9rem;
+  border-radius: 20px;
+  background: #f5f5f5;
+}
+
+.back-link:hover {
+  color: var(--gold);
+  background: rgba(212,175,55,0.1);
+  transform: translateX(-4px);
+}
+
+.product-detail-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.product-detail-image {
+  width: 100%;
+  border-radius: 14px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+  background: #f5f5f5;
+  transition: transform 0.4s;
+}
+
+.product-detail-image:hover { transform: scale(1.02); }
+
+.product-detail-info h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  color: var(--dark);
+  line-height: 1.2;
+}
+
+.product-detail-price {
+  font-size: 2rem;
+  color: var(--gold);
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  font-family: 'Playfair Display', serif;
+  padding-bottom: 1rem;
+  border-bottom: 2px dashed #eee;
+}
+
+.product-detail-description {
+  margin-bottom: 1.5rem;
+  line-height: 1.9;
+  color: var(--gray);
+  font-size: 0.98rem;
+}
+
+.product-specs {
+  background: linear-gradient(135deg, #f9f9f9, #fefefe);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1.8rem;
+  border-left: 4px solid var(--gold);
+}
+
+.product-specs h3 {
+  margin-bottom: 1rem;
+  color: var(--dark);
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+}
+
+.product-specs ul { list-style: none; }
+
+.product-specs li {
+  padding: 0.6rem 0;
+  border-bottom: 1px dashed #e5e5e5;
+  font-size: 0.95rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.product-specs li:last-child { border-bottom: none; }
+.product-specs strong { color: var(--dark); }
+.product-specs li span { color: var(--gray); }
+
+/* ================== ABOUT PAGE ================== */
+.about-page { background: linear-gradient(180deg, #fafafa 0%, #fff 100%); }
+
+.about-hero {
+  position: relative;
+  height: 380px;
+  background: linear-gradient(135deg, rgba(26,26,26,0.85) 0%, rgba(26,26,26,0.6) 100%),
+              url('https://images.unsplash.com/photo-1495856458515-0637185db551?w=1600&q=80') center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+}
+
+.about-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 50%, rgba(212,175,55,0.15), transparent 60%);
+  pointer-events: none;
+}
+
+.about-hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 0 20px;
+  animation: fadeUp 1s ease-out;
+}
+
+.about-hero-content h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  color: #fff;
+  margin-bottom: 0.8rem;
+  letter-spacing: 1px;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.about-hero-content h1 span { color: var(--gold); font-style: italic; }
+
+.about-hero-content p {
+  font-size: 1.15rem;
+  color: #ddd;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: -60px auto 3rem;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.stat-box {
+  background: #fff;
+  padding: 1.8rem 1rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+  border-top: 3px solid var(--gold);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.stat-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 40px rgba(212,175,55,0.2);
+}
+
+.stat-box .stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.stat-box .stat-label {
+  font-size: 0.85rem;
+  color: var(--gray);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+.about-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem 20px 2rem;
+}
+
+.about-content > p {
+  margin-bottom: 1rem;
+  line-height: 1.9;
+  color: #555;
+  font-size: 1rem;
+  text-align: justify;
+}
+
+.about-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 2.5rem auto;
+  padding: 0 20px;
+}
+
+.feature-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  border: 1px solid #f0f0f0;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px rgba(212,175,55,0.15);
+  border-color: rgba(212,175,55,0.3);
+}
+
+.feature-card:hover::before { transform: scaleX(1); }
+
+.feature-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1rem;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: var(--dark);
+  box-shadow: 0 8px 20px rgba(212,175,55,0.3);
+  transition: transform 0.4s ease;
+}
+
+.feature-card:hover .feature-icon { transform: rotate(360deg) scale(1.1); }
+
+.feature-card h3 {
+  font-size: 1.15rem;
+  color: var(--dark);
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.5px;
+}
+
+.feature-card p {
+  color: var(--gray);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.about-commitments {
+  background: linear-gradient(135deg, var(--dark), #2a2a2a);
+  border-radius: 14px;
+  padding: 2.5rem 2rem;
+  max-width: 1000px;
+  margin: 2.5rem auto 4rem;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+}
+
+.about-commitments h2 {
+  color: var(--gold);
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  margin-bottom: 1.8rem;
+  letter-spacing: 1px;
+  position: relative;
+  padding-bottom: 0.8rem;
+}
+
+.about-commitments h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 60px; height: 2px;
+  background: var(--gold);
+}
+
+.commitment-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+  list-style: none;
+}
+
+.commitment-list li {
+  color: #ddd;
+  padding: 1rem 1rem 1rem 3rem;
+  background: rgba(255,255,255,0.04);
+  border-radius: 8px;
+  border-left: 3px solid var(--gold);
+  position: relative;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.commitment-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.commitment-list li:hover {
+  background: rgba(212,175,55,0.12);
+  transform: translateX(5px);
+}
+
+.about-timeline {
+  max-width: 900px;
+  margin: 3rem auto 4rem;
+  padding: 0 20px;
+  position: relative;
+}
+
+.about-timeline h2 {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: var(--dark);
+  margin-bottom: 2.5rem;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.about-timeline h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 60px; height: 3px;
+  background: var(--gold);
+}
+
+.timeline-list {
+  position: relative;
+  padding-left: 2.5rem;
+}
+
+.timeline-list::before {
+  content: '';
+  position: absolute;
+  left: 8px; top: 8px; bottom: 8px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--gold), var(--gold-light), var(--gold));
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 1.8rem;
+  padding: 1rem 1.3rem;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+  transition: all 0.3s ease;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -2.5rem;
+  top: 1.3rem;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 3px rgba(212,175,55,0.25);
+  transition: all 0.3s ease;
+}
+
+.timeline-item:hover {
+  transform: translateX(8px);
+  box-shadow: 0 8px 25px rgba(212,175,55,0.15);
+}
+
+.timeline-item:hover::before {
+  background: var(--dark);
+  box-shadow: 0 0 0 5px rgba(212,175,55,0.35);
+}
+
+.timeline-item .year {
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+.timeline-item p {
+  color: #555;
+  font-size: 0.92rem;
+  margin-top: 0.3rem;
+}
+
+/* ================== CONTACT ================== */
+.contact-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-bottom: 4rem;
+}
+
+.contact-info h2,
+.contact-form h2 {
+  margin-bottom: 1.2rem;
+  color: var(--dark);
+  font-family: 'Playfair Display', serif;
+}
+
+.contact-info p {
+  margin-bottom: 0.9rem;
+  font-size: 1rem;
+}
+
+.contact-info a {
+  color: var(--gold);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* ================== FORM ================== */
+.form-group { margin-bottom: 1rem; }
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+  color: #333;
+  font-size: 0.92rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border: 1.5px solid #e5e5e5;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: all 0.3s;
+  background: #fafafa;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(212,175,55,0.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 70px;
+}
+
+/* ================== MODAL ================== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(4px);
+  overflow-y: auto;
+  padding: 2rem 1rem;
+}
+
+.modal.show { display: block; }
+
+.modal-content {
+  background: white;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 16px;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  animation: slideDown 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-60px) scale(0.95); opacity: 0; }
+  to   { transform: translateY(0) scale(1);     opacity: 1; }
+}
+
+.close {
+  position: absolute;
+  right: 1rem;
+  top: 0.8rem;
+  font-size: 1.9rem;
+  cursor: pointer;
+  color: #999;
+  transition: all 0.3s;
+  line-height: 1;
+  background: none;
+  border: none;
+  font-family: inherit;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close:hover {
+  color: var(--dark);
+  background: #f0f0f0;
+  transform: rotate(90deg);
+}
+
+.modal-content h2 {
+  margin-bottom: 0.5rem;
+  color: var(--dark);
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  padding-right: 2rem;
+}
+
+.order-product-name {
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+  font-size: 0.95rem;
+}
+
+/* ================== FOOTER ================== */
+footer {
+  position: relative;
+  background: linear-gradient(180deg, #1f1f1f 0%, #141414 100%);
+  color: #bbb;
+  padding: 0;
+  margin-top: 4rem;
+  overflow: hidden;
+}
+
+.footer-wave {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  transform: rotate(180deg);
+  pointer-events: none;
+}
+
+.footer-wave svg { display: block; width: 100%; height: 100%; }
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold-light), var(--gold), var(--gold-light), transparent);
+}
+
+footer::after {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 300px;
+  background: radial-gradient(ellipse, rgba(212,175,55,0.08), transparent 70%);
+  pointer-events: none;
+}
+
+.footer-content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.6fr 1.2fr 1fr;
+  gap: 2.5rem;
+  padding: 3rem 0 2rem;
+}
+
+.footer-section h3 {
+  color: var(--gold);
+  margin-bottom: 1.3rem;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 0.7rem;
+  font-family: 'Playfair Display', serif;
+}
+
+.footer-section h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 36px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  transition: width 0.4s ease;
+}
+
+.footer-section:hover h3::after { width: 60px; }
+
+.footer-section p {
+  margin-bottom: 0.7rem;
+  color: #bbb;
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.footer-section a {
+  color: #bbb;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.footer-section a:hover { color: var(--gold); }
+
+.footer-brand .brand-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: var(--gold);
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-brand .brand-logo::before {
+  content: '⌚';
+  font-size: 1.2rem;
+}
+
+.footer-brand p {
+  color: #999;
+  font-style: italic;
+  line-height: 1.8;
+}
+
+.footer-brand .brand-tagline {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: var(--gold);
+  font-size: 0.82rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 500;
+  opacity: 0.85;
+}
+
+.footer-contact p {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.4rem 0;
+}
+
+.footer-contact .contact-icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(212,175,55,0.1);
+  border: 1px solid rgba(212,175,55,0.25);
+  color: var(--gold);
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.footer-contact p:hover .contact-icon {
+  background: var(--gold);
+  color: var(--dark);
+  transform: rotate(360deg) scale(1.1);
+  box-shadow: 0 5px 15px rgba(212,175,55,0.4);
+}
+
+.footer-contact p:hover a {
+  color: var(--gold);
+  transform: translateX(3px);
+  display: inline-block;
+}
+
+.footer-contact strong { color: #ddd; font-weight: 500; }
+
+.footer-social {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.footer-social a {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(212,175,55,0.25);
+  color: #ccc;
+  font-size: 1rem;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-social a::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  transform: scale(0);
+  border-radius: 50%;
+  transition: transform 0.4s ease;
+  z-index: 0;
+}
+
+.footer-social a span {
+  position: relative;
+  z-index: 1;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.footer-social a:hover {
+  color: var(--dark);
+  border-color: var(--gold);
+  transform: translateY(-5px) rotate(-8deg);
+  box-shadow: 0 10px 25px rgba(212,175,55,0.4);
+}
+
+.footer-social a:hover::before { transform: scale(1); }
+
+.footer-bottom {
+  position: relative;
+  z-index: 1;
+  background: #0a0a0a;
+  padding: 1.2rem 1rem;
+  border-top: 1px solid rgba(212,175,55,0.15);
+}
+
+.footer-bottom-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  font-size: 0.85rem;
+  color: #777;
+}
+
+.footer-bottom-content .heart {
+  color: #ff4757;
+  display: inline-block;
+  animation: heartBeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  25%      { transform: scale(1.2); }
+  50%      { transform: scale(1); }
+}
+
+.footer-bottom-content strong { color: var(--gold); font-weight: 500; }
+
+.footer-bottom-links {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.footer-bottom-links a {
+  color: #777;
+  text-decoration: none;
+  transition: color 0.3s;
+  position: relative;
+}
+
+.footer-bottom-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.3s;
+}
+
+.footer-bottom-links a:hover { color: var(--gold); }
+.footer-bottom-links a:hover::after { width: 100%; }
+
+/* ================== BACK TO TOP ================== */
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 46px;
+  height: 46px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: var(--dark);
+  border: none;
+  border-radius: 50%;
+  font-size: 1.3rem;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(212,175,55,0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+#backToTop.show { opacity: 1; pointer-events: auto; }
+
+#backToTop:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 12px 30px rgba(212,175,55,0.55);
+}
+
+/* ================== RESPONSIVE ================== */
+@media (max-width: 992px) {
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .brands-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+/* ================== MOBILE MENU (Hamburger) ================== */
+@media (max-width: 768px) {
+  .header-content {
+    /* Giữ logo trái + hamburger phải */
+    flex-direction: row;
+    gap: 0;
+  }
+
+  .logo h1 { font-size: 1.3rem; }
+
+  /* Hiện nút hamburger */
+  .hamburger { display: block; }
+
+  /* Nav ẩn thành drawer trượt từ phải */
+  nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 75%;
+    max-width: 320px;
+    height: 100vh;
+    background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
+    box-shadow: -10px 0 40px rgba(0,0,0,0.5);
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1050;
+    padding: 5rem 1.5rem 2rem;
+    overflow-y: auto;
+    border-left: 2px solid rgba(212,175,55,0.25);
+  }
+
+  nav.open { right: 0; }
+
+  /* Logo giả trong drawer */
+  nav::before {
+    content: '⌚ HMB Agency';
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--gold);
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  /* Overlay tối khi mở menu */
+  .nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(3px);
+    z-index: 1040;
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+
+  .nav-overlay.show {
+    display: block;
+    opacity: 1;
+  }
+
+  /* Nav list xếp dọc */
+  nav ul {
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+  }
+
+  nav ul li {
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  nav ul li:last-child { border-bottom: none; }
+
+  nav ul li a {
+    display: block;
+    padding: 1rem 0.5rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    transition: all 0.3s;
+  }
+
+  nav ul li a::after {
+    /* Bỏ gạch dưới ở mobile */
+    display: none;
+  }
+
+  nav ul li a:hover,
+  nav ul li a.active {
+    background: rgba(212,175,55,0.1);
+    padding-left: 1rem;
+    color: var(--gold);
+  }
+
+  /* Body lock khi mở menu */
+  body.menu-open { overflow: hidden; }
+
+  /* --- Các responsive khác --- */
+  .hero { height: 460px; background-attachment: scroll; }
+  .hero-content::before { font-size: 0.7rem; letter-spacing: 4px; }
+  .hero-content h2 { font-size: 1.9rem; }
+  .hero-content p { font-size: 0.95rem; }
+
+  .section-title, .page-title { font-size: 1.7rem; }
+
+  .product-detail-content,
+  .contact-content {
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
+  }
+
+  .product-detail-info h1 { font-size: 1.6rem; }
+  .product-detail-price { font-size: 1.5rem; }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem 0 1.5rem;
+    text-align: left;
+  }
+
+  .footer-social { justify-content: flex-start; }
+
+  .footer-bottom-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.6rem;
+  }
+
+  .footer-wave { height: 40px; }
+
+  /* About responsive */
+  .about-hero { height: 300px; }
+  .about-hero-content h1 { font-size: 2rem; }
+  .about-hero-content p { font-size: 1rem; }
+
+  .about-stats {
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: -50px;
+    gap: 1rem;
+  }
+
+  .stat-box .stat-number { font-size: 1.7rem; }
+  .stat-box .stat-label { font-size: 0.75rem; }
+
+  .about-features { grid-template-columns: 1fr; }
+  .commitment-list { grid-template-columns: 1fr; }
+  .about-commitments { padding: 1.8rem 1.3rem; }
+  .about-timeline h2 { font-size: 1.4rem; }
+
+  /* Brands responsive */
+  .brands-hero { height: 260px; }
+  .brands-hero-content h1 { font-size: 1.9rem; }
+  .brands-hero-content p { font-size: 0.95rem; }
+  .brands-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.9rem;
+    margin-top: -40px;
+  }
+  .brand-card { padding: 1.2rem 0.8rem; }
+  .brand-logo-wrap { width: 65px; height: 65px; margin-bottom: 0.8rem; }
+  .brand-initial { font-size: 1.6rem; }
+  .brand-card h3 { font-size: 0.95rem; }
+  .brand-card .brand-origin { font-size: 0.7rem; letter-spacing: 0.5px; }
+  .brand-card .brand-desc { font-size: 0.75rem; line-height: 1.5; }
+  .brand-card .brand-count { font-size: 0.68rem; padding: 0.28rem 0.6rem; }
+
+  #backToTop { bottom: 20px; right: 20px; width: 42px; height: 42px; }
+}
+
+/* MOBILE: 2 THẺ / HÀNG */
+@media (max-width: 600px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+    padding: 1rem 0 1.5rem;
+  }
+
+  .product-image { height: 150px; }
+  .product-info { padding: 0.6rem 0.7rem 0.8rem; }
+
+  .product-info h3 {
+    font-size: 0.82rem;
+    min-height: 2.5em;
+    margin-bottom: 0.3rem;
+  }
+
+  .product-price { font-size: 0.9rem; margin-bottom: 0.5rem; }
+
+  .btn-order { padding: 0.5rem 0.4rem; font-size: 0.75rem; }
+
+  .product-card .badge { font-size: 0.62rem; padding: 0.2rem 0.5rem; top: 8px; left: 8px; }
+
+  .hero { height: 380px; }
+  .hero-content h2 { font-size: 1.5rem; }
+  .hero-content p { font-size: 0.85rem; }
+
+  .container { padding: 0 10px; }
+
+  .intro-grid { gap: 1.2rem; }
+  .intro-icon { width: 42px; height: 42px; font-size: 1.1rem; }
+  .intro-item h4 { font-size: 0.92rem; }
+  .intro-item p { font-size: 0.8rem; }
+
+  .filter-bar { gap: 0.4rem; }
+  .filter-btn { padding: 0.45rem 0.9rem; font-size: 0.78rem; }
+
+  .section-header .eyebrow { padding: 0 30px; font-size: 0.72rem; letter-spacing: 3px; }
+  .section-header .eyebrow::before,
+  .section-header .eyebrow::after { width: 20px; }
+
+  .section-title, .page-title { font-size: 1.35rem; }
+
+  .modal-content { padding: 1.5rem 1.2rem; }
+  .modal-content h2 { font-size: 1.3rem; }
+
+  .about-hero { height: 260px; }
+  .about-hero-content h1 { font-size: 1.6rem; }
+
+  .about-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.7rem;
+    margin-top: -40px;
+  }
+
+  .stat-box { padding: 1.2rem 0.6rem; }
+  .stat-box .stat-number { font-size: 1.4rem; }
+  .stat-box .stat-label { font-size: 0.7rem; letter-spacing: 0.5px; }
+
+  .feature-card { padding: 1.5rem 1rem; }
+  .feature-icon { width: 52px; height: 52px; font-size: 1.4rem; }
+
+  .timeline-list { padding-left: 2rem; }
+  .timeline-item::before { left: -2rem; }
+
+  footer { margin-top: 3rem; }
+  .footer-content { padding: 1.5rem 0 1.2rem; }
+
+  .footer-section h3 { font-size: 0.9rem; margin-bottom: 1rem; }
+  .footer-section p  { font-size: 0.85rem; }
+
+  .footer-brand .brand-logo { font-size: 1.25rem; }
+
+  .footer-contact .contact-icon { width: 28px; height: 28px; font-size: 0.8rem; }
+
+  .footer-social a { width: 38px; height: 38px; font-size: 0.9rem; }
+
+  .footer-bottom { padding: 1rem 0.8rem; }
+  .footer-bottom-content { font-size: 0.78rem; }
+}
+
+@media (max-width: 360px) {
+  .product-image { height: 130px; }
+  .product-info h3 { font-size: 0.75rem; }
+  .product-price { font-size: 0.82rem; }
+  .btn-order { font-size: 0.7rem; padding: 0.45rem 0.3rem; }
+
+  .brands-grid { grid-template-columns: 1fr; }
+}
+
+/* Load animation cho product cards */
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.product-card { animation: cardIn 0.5s ease-out backwards; }
+
+.product-card:nth-child(1)  { animation-delay: 0.02s; }
+.product-card:nth-child(2)  { animation-delay: 0.04s; }
+.product-card:nth-child(3)  { animation-delay: 0.06s; }
+.product-card:nth-child(4)  { animation-delay: 0.08s; }
+.product-card:nth-child(5)  { animation-delay: 0.10s; }
+.product-card:nth-child(6)  { animation-delay: 0.12s; }
+.product-card:nth-child(7)  { animation-delay: 0.14s; }
+.product-card:nth-child(8)  { animation-delay: 0.16s; }
+.product-card:nth-child(9)  { animation-delay: 0.18s; }
+.product-card:nth-child(10) { animation-delay: 0.20s; }
+.product-card:nth-child(11) { animation-delay: 0.22s; }
+.product-card:nth-child(12) { animation-delay: 0.24s; }
+.product-card:nth-child(13) { animation-delay: 0.26s; }
+.product-card:nth-child(14) { animation-delay: 0.28s; }
+.product-card:nth-child(15) { animation-delay: 0.30s; }
+.product-card:nth-child(16) { animation-delay: 0.32s; }
+.product-card:nth-child(17) { animation-delay: 0.34s; }
+.product-card:nth-child(18) { animation-delay: 0.36s; }
+.product-card:nth-child(19) { animation-delay: 0.38s; }
+.product-card:nth-child(20) { animation-delay: 0.40s; }
+
+/* Brand card animation */
+.brand-card { animation: cardIn 0.5s ease-out backwards; }
+.brand-card:nth-child(1)  { animation-delay: 0.03s; }
+.brand-card:nth-child(2)  { animation-delay: 0.06s; }
+.brand-card:nth-child(3)  { animation-delay: 0.09s; }
+.brand-card:nth-child(4)  { animation-delay: 0.12s; }
+.brand-card:nth-child(5)  { animation-delay: 0.15s; }
+.brand-card:nth-child(6)  { animation-delay: 0.18s; }
+.brand-card:nth-child(7)  { animation-delay: 0.21s; }
+.brand-card:nth-child(8)  { animation-delay: 0.24s; }
+.brand-card:nth-child(9)  { animation-delay: 0.27s; }
+.brand-card:nth-child(10) { animation-delay: 0.30s; }
+</style>
+</head>
+<body>
+
+<!-- ================== HEADER ================== -->
+<header>
+  <div class="container header-content">
+    <a href="#/" class="logo"><h1>HMB Agency</h1></a>
+
+    <!-- Overlay cho mobile menu -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- Nav -->
+    <nav id="mainNav">
+      <ul>
+        <li><a href="#/" data-route="/">Trang Chủ</a></li>
+        <li><a href="#/brands" data-route="/brands">Thương Hiệu</a></li>
+        <li><a href="#/about" data-route="/about">Về Chúng Tôi</a></li>
+        <li><a href="#/contact" data-route="/contact">Liên Hệ</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hamburger button -->
+    <button class="hamburger" id="hamburgerBtn" aria-label="Mở menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ================== NỘI DUNG SPA ================== -->
+<main id="app"></main>
+
+<!-- ================== BACK TO TOP ================== -->
+<button id="backToTop" aria-label="Lên đầu trang">↑</button>
+
+<!-- ================== MODAL ĐẶT HÀNG ================== -->
+<div id="orderModal" class="modal">
+  <div class="modal-content">
+    <button class="close" id="modalClose" aria-label="Đóng">&times;</button>
+    <h2>Đặt Hàng</h2>
+    <p id="orderProductName" class="order-product-name"></p>
+    <form id="orderForm">
+      <input type="hidden" id="productId">
+      <div class="form-group">
+        <label for="customerName">Họ và tên:</label>
+        <input type="text" id="customerName" required>
+      </div>
+      <div class="form-group">
+        <label for="customerPhone">Số điện thoại:</label>
+        <input type="tel" id="customerPhone" required pattern="[0-9+\s]{8,15}">
+      </div>
+      <div class="form-group">
+        <label for="customerEmail">Email:</label>
+        <input type="email" id="customerEmail" required>
+      </div>
+      <div class="form-group">
+        <label for="customerAddress">Địa chỉ:</label>
+        <textarea id="customerAddress" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="quantity">Số lượng:</label>
+        <input type="number" id="quantity" value="1" min="1" required>
+      </div>
+      <div class="form-group">
+        <label for="notes">Ghi chú:</label>
+        <textarea id="notes"></textarea>
+      </div>
+      <button type="submit" class="btn-primary" style="width:100%;">Xác Nhận Đặt Hàng</button>
+    </form>
+  </div>
+</div>
+
+<!-- ================== FOOTER ================== -->
+<footer>
+  <div class="footer-wave">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 L0,60 Z"
+            fill="#1f1f1f"/>
+    </svg>
+  </div>
+
+  <div class="container footer-content">
+    <div class="footer-section footer-brand">
+      <div class="brand-logo">HMB Agency</div>
+      <p>Chuyên cung cấp đồng hồ cao cấp chính hãng từ các thương hiệu nổi tiếng thế giới.</p>
+      <span class="brand-tagline">Luxury Watch Store</span>
+    </div>
+
+    <div class="footer-section footer-contact">
+      <h3>Liên Hệ</h3>
+      <p>
+        <span class="contact-icon">📞</span>
+        <span><strong>Hotline:</strong> <a href="tel:0855555140">0855 555 140</a></span>
+      </p>
+      <p>
+        <span class="contact-icon">✉️</span>
+        <span><strong>Email:</strong> <a href="mailto:hmb.agency.group@gmail.com">hmb.agency.group@gmail.com</a></span>
+      </p>
+      <p>
+        <span class="contact-icon">📍</span>
+        <span>123 Đường ABC, Quận 1, TP.HCM</span>
+      </p>
+    </div>
+
+    <div class="footer-section">
+      <h3>Theo Dõi</h3>
+      <p style="margin-bottom:1rem; color:#999; font-size:0.88rem;">
+        Kết nối với chúng tôi để cập nhật sản phẩm mới nhất
+      </p>
+      <div class="footer-social">
+        <a href="#" title="Facebook" aria-label="Facebook"><span>f</span></a>
+        <a href="#" title="Instagram" aria-label="Instagram"><span>ig</span></a>
+        <a href="#" title="Twitter" aria-label="Twitter"><span>tw</span></a>
+        <a href="#" title="YouTube" aria-label="YouTube"><span>yt</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container footer-bottom-content">
+      <p>&copy; 2024 <strong>HMB Agency</strong>. Made with <span class="heart">♥</span> in Vietnam</p>
+      <div class="footer-bottom-links">
+        <a href="#/">Trang Chủ</a>
+        <a href="#/brands">Thương Hiệu</a>
+        <a href="#/about">Về Chúng Tôi</a>
+        <a href="#/contact">Liên Hệ</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   1. DỮ LIỆU 20 SẢN PHẨM
+   ============================================================ */
+const PRODUCTS = [
+  { id: 1, name: "Rolex Submariner Date", price: 285000000, tag: "hot",
+    image: "https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?w=800&q=80",
+    description: "Đồng hồ lặn huyền thoại với thiết kế sang trọng và bền bỉ. Mặt số đen cổ điển, vòng bezel ceramic xoay một chiều chống trầy xước.",
+    brand: "Rolex", movement: "Automatic", caseSize: "41mm",
+    waterResistance: "300m", material: "Thép không gỉ 904L" },
+
+  { id: 2, name: "Omega Speedmaster Professional", price: 185000000, tag: "",
+    image: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=800&q=80",
+    description: "Chiếc đồng hồ 'Moonwatch' nổi tiếng từng đồng hành cùng các phi hành gia NASA trong sứ mệnh Apollo.",
+    brand: "Omega", movement: "Automatic", caseSize: "42mm",
+    waterResistance: "50m", material: "Thép không gỉ" },
+
+  { id: 3, name: "Tag Heuer Carrera Chronograph", price: 95000000, tag: "",
+    image: "https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=800&q=80",
+    description: "Thiết kế thể thao thanh lịch, phong cách đua xe đầy cuốn hút với bộ máy chronograph chính xác.",
+    brand: "Tag Heuer", movement: "Automatic", caseSize: "41mm",
+    waterResistance: "100m", material: "Thép không gỉ" },
+
+  { id: 4, name: "Seiko Presage Cocktail Time", price: 25000000, tag: "new",
+    image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=800&q=80",
+    description: "Nghệ thuật chế tác Nhật Bản với mặt số enamel tuyệt đẹp, lấy cảm hứng từ cocktail.",
+    brand: "Seiko", movement: "Automatic", caseSize: "40.5mm",
+    waterResistance: "50m", material: "Thép không gỉ" },
+
+  { id: 5, name: "Citizen Eco-Drive Titanium", price: 15000000, tag: "",
+    image: "https://images.unsplash.com/photo-1594534475808-b18fc33b045e?w=800&q=80",
+    description: "Công nghệ năng lượng ánh sáng tiên tiến, không cần thay pin, vỏ titanium siêu nhẹ.",
+    brand: "Citizen", movement: "Eco-Drive", caseSize: "42mm",
+    waterResistance: "100m", material: "Titanium" },
+
+  { id: 6, name: "Tissot PRX Powermatic 80", price: 18000000, tag: "new",
+    image: "https://images.unsplash.com/photo-1533139502658-0198f920d8e8?w=800&q=80",
+    description: "Thiết kế retro thập niên 70 với dây thép tích hợp độc đáo, bộ máy Powermatic 80 giờ dự trữ năng lượng.",
+    brand: "Tissot", movement: "Automatic", caseSize: "40mm",
+    waterResistance: "100m", material: "Thép không gỉ" },
+
+  { id: 7, name: "Rolex Datejust 36", price: 320000000, tag: "hot",
+    image: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&q=80",
+    description: "Biểu tượng của sự thanh lịch và đẳng cấp vượt thời gian với lịch ngày ở vị trí 3 giờ.",
+    brand: "Rolex", movement: "Automatic", caseSize: "36mm",
+    waterResistance: "100m", material: "Vàng trắng 18k" },
+
+  { id: 8, name: "Omega Seamaster Diver 300M", price: 145000000, tag: "",
+    image: "https://images.unsplash.com/photo-1622434641406-a158123450f9?w=800&q=80",
+    description: "Đồng hồ lặn chuyên nghiệp với thiết kế sóng biển đặc trưng và van thoát khí heli.",
+    brand: "Omega", movement: "Automatic", caseSize: "42mm",
+    waterResistance: "300m", material: "Thép không gỉ" },
+
+  { id: 9, name: "Longines Master Collection", price: 65000000, tag: "",
+    image: "https://images.unsplash.com/photo-1508057198894-247b23fe5ade?w=800&q=80",
+    description: "Vẻ đẹp cổ điển với bộ máy chronograph tinh xảo, mặt số guilloché thủ công.",
+    brand: "Longines", movement: "Automatic", caseSize: "40mm",
+    waterResistance: "30m", material: "Thép không gỉ" },
+
+  { id: 10, name: "Casio G-Shock MR-G", price: 55000000, tag: "hot",
+    image: "https://images.unsplash.com/photo-1619134778706-7015533a6150?w=800&q=80",
+    description: "Dòng cao cấp nhất của G-Shock với vỏ titanium, chống sốc tuyệt đối, kết nối Bluetooth.",
+    brand: "Casio", movement: "Quartz", caseSize: "49mm",
+    waterResistance: "200m", material: "Titanium" },
+
+  { id: 11, name: "Rolex Day-Date President", price: 450000000, tag: "",
+    image: "https://images.unsplash.com/photo-1629581678313-36cf745a9af9?w=800&q=80",
+    description: "Chiếc đồng hồ của các tổng thống với dây President vàng nguyên khối, lịch thứ và ngày.",
+    brand: "Rolex", movement: "Automatic", caseSize: "40mm",
+    waterResistance: "100m", material: "Vàng vàng 18k" },
+
+  { id: 12, name: "Seiko 5 Sports SRPD", price: 8500000, tag: "new",
+    image: "https://images.unsplash.com/photo-1620625515032-6ed0c1790c75?w=800&q=80",
+    description: "Dòng đồng hồ thể thao giá tốt nhất của Seiko với thiết kế trẻ trung, năng động.",
+    brand: "Seiko", movement: "Automatic", caseSize: "42.5mm",
+    waterResistance: "100m", material: "Thép không gỉ" },
+
+  { id: 13, name: "Orient Bambino Version 7", price: 6500000, tag: "",
+    image: "https://images.unsplash.com/photo-1594534475808-b18fc33b045e?w=800&q=80",
+    description: "Vẻ đẹp cổ điển với mặt số dome cong, dây da cao cấp, phù hợp mọi phong cách.",
+    brand: "Orient", movement: "Automatic", caseSize: "40.5mm",
+    waterResistance: "30m", material: "Thép không gỉ" },
+
+  { id: 14, name: "Hamilton Khaki Field", price: 22000000, tag: "",
+    image: "https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=800&q=80",
+    description: "Đồng hồ quân đội với thiết kế mạnh mẽ, dễ đọc, dây NATO thoải mái.",
+    brand: "Hamilton", movement: "Automatic", caseSize: "38mm",
+    waterResistance: "50m", material: "Thép không gỉ" },
+
+  { id: 15, name: "Rolex GMT-Master II Pepsi", price: 385000000, tag: "hot",
+    image: "https://images.unsplash.com/photo-1622434641406-a158123450f9?w=800&q=80",
+    description: "Chiếc đồng hồ du hành với bezel hai màu Pepsi huyền thoại, hiển thị 2 múi giờ.",
+    brand: "Rolex", movement: "Automatic", caseSize: "40mm",
+    waterResistance: "100m", material: "Thép không gỉ" },
+
+  { id: 16, name: "Omega Constellation", price: 165000000, tag: "",
+    image: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=800&q=80",
+    description: "Thiết kế với 'claws' đặc trưng ở bezel, biểu tượng của sự sang trọng tinh tế.",
+    brand: "Omega", movement: "Automatic", caseSize: "39mm",
+    waterResistance: "50m", material: "Thép không gỉ" },
+
+  { id: 17, name: "Tissot Le Locle", price: 14500000, tag: "",
+    image: "https://images.unsplash.com/photo-1533139502658-0198f920d8e8?w=800&q=80",
+    description: "Thiết kế cổ điển với mặt số guilloché tinh xảo, lấy tên từ quê hương Tissot.",
+    brand: "Tissot", movement: "Automatic", caseSize: "39.3mm",
+    waterResistance: "30m", material: "Thép không gỉ" },
+
+  { id: 18, name: "Citizen Promaster Sky", price: 28000000, tag: "",
+    image: "https://images.unsplash.com/photo-1594534475808-b18fc33b045e?w=800&q=80",
+    description: "Đồng hồ phi công với các chức năng phức tạp, Eco-Drive, vỏ titanium chống gỉ.",
+    brand: "Citizen", movement: "Eco-Drive", caseSize: "44mm",
+    waterResistance: "200m", material: "Titanium" },
+
+  { id: 19, name: "Longines HydroConquest", price: 42000000, tag: "",
+    image: "https://images.unsplash.com/photo-1508057198894-247b23fe5ade?w=800&q=80",
+    description: "Đồng hồ lặn thể thao với thiết kế trẻ trung, khả năng chống nước chuyên nghiệp.",
+    brand: "Longines", movement: "Automatic", caseSize: "41mm",
+    waterResistance: "300m", material: "Thép không gỉ" },
+
+  { id: 20, name: "Casio Edifice Bluetooth", price: 8500000, tag: "new",
+    image: "https://images.unsplash.com/photo-1619134778706-7015533a6150?w=800&q=80",
+    description: "Đồng hồ thể thao kết nối smartphone, thiết kế lấy cảm hứng từ xe đua.",
+    brand: "Casio", movement: "Quartz", caseSize: "48.5mm",
+    waterResistance: "100m", material: "Thép không gỉ" }
+];
+
+const formatPrice = (p) => p.toLocaleString('vi-VN') + ' ₫';
+
+/* ============================================================
+   1b. DỮ LIỆU THƯƠNG HIỆU
+   ============================================================ */
+const BRANDS_INFO = [
+  {
+    name: "Rolex",
+    origin: "Thụy Sĩ",
+    initial: "R",
+    desc: "Biểu tượng của sự sang trọng và đẳng cấp. Được thành lập năm 1905, Rolex là thương hiệu đồng hồ xa xỉ nổi tiếng nhất thế giới với những mẫu Submariner, Datejust, Day-Date huyền thoại.",
+  },
+  {
+    name: "Omega",
+    origin: "Thụy Sĩ",
+    initial: "Ω",
+    desc: "Thương hiệu đồng hồ chính thức của NASA. Nổi tiếng với Speedmaster 'Moonwatch' và bộ sưu tập Seamaster chuyên nghiệp dành cho thợ lặn.",
+  },
+  {
+    name: "Tag Heuer",
+    origin: "Thụy Sĩ",
+    initial: "TH",
+    desc: "Gắn liền với thế giới đua xe và thể thao. Tag Heuer nổi tiếng với bộ sưu tập Carrera, Monaco và các mẫu chronograph chính xác cao.",
+  },
+  {
+    name: "Seiko",
+    origin: "Nhật Bản",
+    initial: "S",
+    desc: "Ông lớn của ngành đồng hồ Nhật Bản từ năm 1881. Nổi tiếng với các dòng Presage, Prospex và Seiko 5 với chất lượng tuyệt vời trong tầm giá.",
+  },
+  {
+    name: "Citizen",
+    origin: "Nhật Bản",
+    initial: "C",
+    desc: "Tiên phong với công nghệ Eco-Drive chạy bằng ánh sáng, không cần thay pin. Citizen cung cấp đồng hồ chất lượng cao cho mọi phân khúc.",
+  },
+  {
+    name: "Tissot",
+    origin: "Thụy Sĩ",
+    initial: "T",
+    desc: "Thương hiệu Thụy Sĩ truyền thống từ năm 1853. Kết hợp giữa chất lượng châu Âu và giá cả hợp lý, nổi tiếng với PRX và Le Locle.",
+  },
+  {
+    name: "Longines",
+    origin: "Thụy Sĩ",
+    initial: "L",
+    desc: "Thương hiệu lâu đời với logo đồng hồ cát có cánh. Longines nổi tiếng với vẻ đẹp thanh lịch, tinh tế và bộ sưu tập Master Collection.",
+  },
+  {
+    name: "Casio",
+    origin: "Nhật Bản",
+    initial: "G",
+    desc: "Nhà sản xuất đồng hồ lớn nhất Nhật Bản. Nổi tiếng toàn cầu với dòng G-Shock siêu bền, Edifice thể thao và nhiều dòng khác.",
+  },
+  {
+    name: "Orient",
+    origin: "Nhật Bản",
+    initial: "O",
+    desc: "Thương hiệu con của Seiko Epson với hơn 70 năm kinh nghiệm. Orient nổi tiếng với các mẫu automatic giá rẻ chất lượng cao như Bambino.",
+  },
+  {
+    name: "Hamilton",
+    origin: "Mỹ / Thụy Sĩ",
+    initial: "H",
+    desc: "Thương hiệu Mỹ từ năm 1892, nay thuộc tập đoàn Swatch Group. Hamilton nổi tiếng với dòng Khaki Field quân đội và đồng hồ phi công.",
+  }
+];
+
+/* Lấy danh sách tên thương hiệu để filter */
+const BRANDS = ['Tất cả', ...BRANDS_INFO.map(b => b.name)];
+
+/* Đếm số sản phẩm mỗi thương hiệu */
+function countProductsByBrand(brandName) {
+  return PRODUCTS.filter(p => p.brand === brandName).length;
+}
+
+/* Trạng thái filter hiện tại */
+let currentFilter = 'Tất cả';
+
+/* ============================================================
+   2. VIEWS
+   ============================================================ */
+const Views = {
+  /* Trang chủ = Trang sản phẩm */
+  home() {
+    const filtered = currentFilter === 'Tất cả'
+      ? PRODUCTS
+      : PRODUCTS.filter(p => p.brand === currentFilter);
+
+    const list = filtered.map(Views.productCard).join('');
+
+    const filterButtons = BRANDS.map(b => `
+      <button class="filter-btn ${b === currentFilter ? 'active' : ''}"
+              data-filter="${b}">${b}</button>
+    `).join('');
+
+    return `
+      <section class="hero">
+        <div class="hero-content">
+          <h2>Bộ Sưu Tập <span>Đồng Hồ</span> Cao Cấp</h2>
+          <p>Khám phá những mẫu đồng hồ sang trọng, đẳng cấp từ các thương hiệu nổi tiếng thế giới</p>
+        </div>
+      </section>
+
+      <section class="intro-strip">
+        <div class="container">
+          <div class="intro-grid">
+            <div class="intro-item">
+              <div class="intro-icon">✓</div>
+              <div>
+                <h4>Chính Hãng 100%</h4>
+                <p>Cam kết sản phẩm chính hãng từ các thương hiệu nổi tiếng</p>
+              </div>
+            </div>
+            <div class="intro-item">
+              <div class="intro-icon">🚚</div>
+              <div>
+                <h4>Miễn Phí Vận Chuyển</h4>
+                <p>Giao hàng toàn quốc, miễn phí cho đơn từ 5 triệu</p>
+              </div>
+            </div>
+            <div class="intro-item">
+              <div class="intro-icon">🛡️</div>
+              <div>
+                <h4>Bảo Hành 5 Năm</h4>
+                <p>Bảo hành toàn cầu, đổi trả trong vòng 7 ngày</p>
+              </div>
+            </div>
+            <div class="intro-item">
+              <div class="intro-icon">💎</div>
+              <div>
+                <h4>Chất Lượng Cao Cấp</h4>
+                <p>Tuyển chọn kỹ lưỡng từ những thương hiệu hàng đầu</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="products-section" id="products">
+        <div class="container">
+          <div class="section-header">
+            <div class="eyebrow">Bộ Sưu Tập</div>
+            <h2 class="section-title">Sản Phẩm Của Chúng Tôi</h2>
+          </div>
+
+          <div class="filter-bar">${filterButtons}</div>
+
+          <div class="products-grid" id="productsGrid">${list}</div>
+        </div>
+      </section>`;
+  },
+
+  productCard(p) {
+    const badge = p.tag === 'hot'
+      ? '<span class="badge">HOT</span>'
+      : p.tag === 'new'
+        ? '<span class="badge new">MỚI</span>'
+        : '';
+
+    return `
+      <div class="product-card">
+        <a href="#/product/${p.id}">
+          ${badge}
+          <img src="${p.image}" alt="${p.name}" class="product-image" loading="lazy">
+        </a>
+        <div class="product-info">
+          <h3>${p.name}</h3>
+          <p class="product-price">${formatPrice(p.price)}</p>
+          <button class="btn-order" data-id="${p.id}" data-action="order">Đặt Hàng</button>
+        </div>
+      </div>`;
+  },
+
+  /* Trang thương hiệu */
+  brands() {
+    const cards = BRANDS_INFO.map(b => {
+      const count = countProductsByBrand(b.name);
+      return `
+        <a href="#/" class="brand-card" data-goto-brand="${b.name}" title="Xem sản phẩm ${b.name}">
+          <div class="brand-logo-wrap">
+            <div class="brand-initial">${b.initial}</div>
+          </div>
+          <h3>${b.name}</h3>
+          <div class="brand-origin">${b.origin}</div>
+          <p class="brand-desc">${b.desc}</p>
+          <span class="brand-count">${count} sản phẩm</span>
+        </a>
+      `;
+    }).join('');
+
+    return `
+      <section class="brands-page">
+        <div class="brands-hero">
+          <div class="brands-hero-content">
+            <span class="eyebrow">Thương Hiệu</span>
+            <h1>Những <span>Tên Tuổi</span> Hàng Đầu</h1>
+            <p>HMB Agency tự hào là đối tác phân phối chính thức của ${BRANDS_INFO.length} thương hiệu đồng hồ danh giá nhất thế giới</p>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="brands-grid">
+            ${cards}
+          </div>
+        </div>
+      </section>`;
+  },
+
+  productDetail(id) {
+    const p = PRODUCTS.find(x => x.id === Number(id));
+    if (!p) {
+      return `
+        <div class="container" style="text-align:center; padding:4rem 0;">
+          <h2>Không tìm thấy sản phẩm</h2>
+          <a href="#/" class="btn-primary" style="margin-top:1rem; display:inline-block;">← Quay lại</a>
+        </div>`;
+    }
+    return `
+      <section class="product-detail">
+        <div class="container">
+          <a href="#/" class="back-link">← Quay lại danh sách</a>
+          <div class="product-detail-content">
+            <div>
+              <img src="${p.image}" alt="${p.name}" class="product-detail-image">
+            </div>
+            <div class="product-detail-info">
+              <h1>${p.name}</h1>
+              <p class="product-detail-price">${formatPrice(p.price)}</p>
+              <p class="product-detail-description">${p.description}</p>
+              <div class="product-specs">
+                <h3>Thông Số Kỹ Thuật</h3>
+                <ul>
+                  <li><strong>Thương hiệu</strong><span>${p.brand}</span></li>
+                  <li><strong>Bộ máy</strong><span>${p.movement}</span></li>
+                  <li><strong>Đường kính mặt</strong><span>${p.caseSize}</span></li>
+                  <li><strong>Chống nước</strong><span>${p.waterResistance}</span></li>
+                  <li><strong>Chất liệu</strong><span>${p.material}</span></li>
+                </ul>
+              </div>
+              <button class="btn-primary btn-large" data-id="${p.id}" data-action="order">Đặt Hàng Ngay</button>
+            </div>
+          </div>
+        </div>
+      </section>`;
+  },
+
+  about() {
+    return `
+      <section class="about-page">
+        <div class="about-hero">
+          <div class="about-hero-content">
+            <h1>Về <span>HMB Agency</span></h1>
+            <p>Hơn một thập kỷ đồng hành cùng những người yêu đồng hồ cao cấp tại Việt Nam</p>
+          </div>
+        </div>
+
+        <div class="about-stats">
+          <div class="stat-box">
+            <div class="stat-number">10+</div>
+            <div class="stat-label">Năm kinh nghiệm</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">5000+</div>
+            <div class="stat-label">Khách hàng</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">10+</div>
+            <div class="stat-label">Thương hiệu</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Chính hãng</div>
+          </div>
+        </div>
+
+        <div class="about-content">
+          <p>HMB Agency tự hào là đơn vị hàng đầu trong lĩnh vực phân phối đồng hồ cao cấp tại Việt Nam. Với hơn 10 năm kinh nghiệm, chúng tôi cam kết mang đến cho khách hàng những sản phẩm chính hãng với chất lượng tốt nhất.</p>
+          <p>Chúng tôi chuyên cung cấp các thương hiệu đồng hồ nổi tiếng thế giới như Rolex, Omega, Tag Heuer, Seiko, Citizen, Tissot, Longines và nhiều thương hiệu khác.</p>
+        </div>
+
+        <div class="about-features">
+          <div class="feature-card">
+            <div class="feature-icon">🎯</div>
+            <h3>Sứ Mệnh</h3>
+            <p>Mang đến cho khách hàng những sản phẩm đồng hồ chất lượng cao với giá cả hợp lý, cùng dịch vụ chăm sóc khách hàng tận tâm.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">👁️</div>
+            <h3>Tầm Nhìn</h3>
+            <p>Trở thành địa chỉ tin cậy số 1 cho những ai yêu thích và sưu tầm đồng hồ cao cấp tại Việt Nam.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">💎</div>
+            <h3>Giá Trị</h3>
+            <p>Uy tín – Chất lượng – Tận tâm là ba trụ cột tạo nên thương hiệu HMB Agency trong suốt nhiều năm qua.</p>
+          </div>
+        </div>
+
+        <div class="about-commitments">
+          <h2>Cam Kết Của Chúng Tôi</h2>
+          <ul class="commitment-list">
+            <li>100% sản phẩm chính hãng</li>
+            <li>Bảo hành toàn cầu 5 năm</li>
+            <li>Đổi trả trong 7 ngày</li>
+            <li>Miễn phí vận chuyển toàn quốc</li>
+          </ul>
+        </div>
+
+        <div class="about-timeline">
+          <h2>Hành Trình Phát Triển</h2>
+          <div class="timeline-list">
+            <div class="timeline-item">
+              <div class="year">2014</div>
+              <p>Thành lập HMB Agency với cửa hàng đầu tiên tại TP.HCM.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="year">2017</div>
+              <p>Mở rộng chi nhánh tại Hà Nội và Đà Nẵng, phục vụ hơn 1000 khách hàng.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="year">2020</div>
+              <p>Trở thành đối tác phân phối chính thức của nhiều thương hiệu đồng hồ nổi tiếng.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="year">2024</div>
+              <p>Đạt cột mốc 5000+ khách hàng và ra mắt nền tảng mua sắm trực tuyến.</p>
+            </div>
+          </div>
+        </div>
+      </section>`;
+  },
+
+  contact() {
+    return `
+      <section class="contact-page">
+        <div class="container">
+          <h1 class="page-title">Liên Hệ Với Chúng Tôi</h1>
+          <div class="contact-content">
+            <div class="contact-info">
+              <h2>Thông Tin Liên Hệ</h2>
+              <p><strong>Hotline:</strong> <a href="tel:0855555140">0855 555 140</a></p>
+              <p><strong>Email:</strong> <a href="mailto:hmb.agency.group@gmail.com">hmb.agency.group@gmail.com</a></p>
+              <p><strong>Địa chỉ:</strong> 123 Đường ABC, Quận 1, TP.HCM</p>
+              <p><strong>Giờ làm việc:</strong> 8:00 - 22:00 (Thứ 2 - Chủ nhật)</p>
+            </div>
+            <div class="contact-form">
+              <h2>Gửi Tin Nhắn</h2>
+              <form id="contactForm">
+                <div class="form-group">
+                  <label for="cName">Họ và tên:</label>
+                  <input type="text" id="cName" required>
+                </div>
+                <div class="form-group">
+                  <label for="cEmail">Email:</label>
+                  <input type="email" id="cEmail" required>
+                </div>
+                <div class="form-group">
+                  <label for="cMessage">Tin nhắn:</label>
+                  <textarea id="cMessage" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Gửi Tin Nhắn</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>`;
+  },
+
+  notFound() {
+    return `
+      <div class="container" style="text-align:center; padding:6rem 0;">
+        <h1 style="font-size:4rem; color:var(--gold); font-family:'Playfair Display',serif;">404</h1>
+        <p style="font-size:1.2rem; margin-bottom:2rem;">Trang bạn tìm không tồn tại</p>
+        <a href="#/" class="btn-primary">Về Trang Chủ</a>
+      </div>`;
+  }
+};
+
+/* ============================================================
+   3. MOBILE MENU (HAMBURGER)
+   ============================================================ */
+const MobileMenu = {
+  init() {
+    this.btn = document.getElementById('hamburgerBtn');
+    this.nav = document.getElementById('mainNav');
+    this.overlay = document.getElementById('navOverlay');
+
+    this.btn.addEventListener('click', () => this.toggle());
+    this.overlay.addEventListener('click', () => this.close());
+
+    // Đóng menu khi click vào link trong nav
+    this.nav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => this.close());
+    });
+
+    // Đóng menu khi resize lên desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) this.close();
+    });
+  },
+
+  toggle() {
+    const isOpen = this.nav.classList.contains('open');
+    if (isOpen) this.close();
+    else this.open();
+  },
+
+  open() {
+    this.nav.classList.add('open');
+    this.overlay.classList.add('show');
+    this.btn.classList.add('active');
+    this.btn.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('menu-open');
+  },
+
+  close() {
+    this.nav.classList.remove('open');
+    this.overlay.classList.remove('show');
+    this.btn.classList.remove('active');
+    this.btn.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('menu-open');
+  }
+};
+
+/* ============================================================
+   4. ROUTER
+   ============================================================ */
+const Router = {
+  routes: {
+    '/':         () => Views.home(),
+    '/brands':   () => Views.brands(),
+    '/about':    () => Views.about(),
+    '/contact':  () => Views.contact()
+  },
+  dynamic: [
+    { pattern: /^\/product\/(\d+)$/, handler: (m) => Views.productDetail(m[1]) }
+  ],
+
+  init() {
+    window.addEventListener('hashchange', () => this.resolve());
+    window.addEventListener('load', () => this.resolve());
+  },
+
+  resolve() {
+    let hash = window.location.hash.replace(/^#/, '') || '/';
+
+    if (hash === 'products') {
+      window.location.hash = '#/';
+      return;
+    }
+
+    const app = document.getElementById('app');
+
+    window.scrollTo({ top: 0, behavior: 'instant' });
+
+    for (const route of this.dynamic) {
+      const match = hash.match(route.pattern);
+      if (match) {
+        app.innerHTML = route.handler(match);
+        this.updateActiveNav(hash);
+        this.afterRender();
+        return;
+      }
+    }
+
+    const handler = this.routes[hash] || Views.notFound;
+    app.innerHTML = handler();
+    this.updateActiveNav(hash);
+    this.afterRender();
+  },
+
+  updateActiveNav(path) {
+    document.querySelectorAll('#mainNav a').forEach(a => {
+      const route = a.getAttribute('data-route');
+      let active = false;
+      if (route === '/') active = path === '/' || path === '' || path.startsWith('/product/');
+      else active = path === route;
+      a.classList.toggle('active', active);
+    });
+  },
+
+  afterRender() {
+    // Form liên hệ
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất.');
+        contactForm.reset();
+      });
+    }
+
+    // Filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        currentFilter = btn.dataset.filter;
+        const grid = document.getElementById('productsGrid');
+        if (!grid) return;
+
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filtered = currentFilter === 'Tất cả'
+          ? PRODUCTS
+          : PRODUCTS.filter(p => p.brand === currentFilter);
+        grid.innerHTML = filtered.map(Views.productCard).join('');
+      });
+    });
+
+    // Click vào brand card → chuyển về trang chủ + filter thương hiệu đó
+    document.querySelectorAll('[data-goto-brand]').forEach(card => {
+      card.addEventListener('click', (e) => {
+        e.preventDefault();
+        const brandName = card.dataset.gotoBrand;
+        currentFilter = brandName;
+        window.location.hash = '#/';
+        // Sau khi router render xong, filter đã được áp dụng qua currentFilter
+      });
+    });
+
+    updateBackToTop();
+  }
+};
+
+/* ============================================================
+   5. ORDER MODAL
+   ============================================================ */
+const OrderModal = {
+  init() {
+    this.el       = document.getElementById('orderModal');
+    this.closeBtn = document.getElementById('modalClose');
+    this.form     = document.getElementById('orderForm');
+
+    this.closeBtn.addEventListener('click', () => this.close());
+    this.el.addEventListener('click', (e) => { if (e.target === this.el) this.close(); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && this.el.classList.contains('show')) this.close();
+    });
+    this.form.addEventListener('submit', (e) => { e.preventDefault(); this.submit(); });
+  },
+
+  open(productId) {
+    const p = PRODUCTS.find(x => x.id === Number(productId));
+    if (!p) return;
+
+    document.getElementById('productId').value = p.id;
+    document.getElementById('orderProductName').textContent = p.name + ' — ' + formatPrice(p.price);
+
+    ['customerName','customerPhone','customerEmail','customerAddress','notes'].forEach(id => {
+      document.getElementById(id).value = '';
+    });
+    document.getElementById('quantity').value = 1;
+
+    this.el.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  },
+
+  close() {
+    this.el.classList.remove('show');
+    document.body.style.overflow = '';
+  },
+
+  submit() {
+    const data = {
+      productId: document.getElementById('productId').value,
+      name:      document.getElementById('customerName').value.trim(),
+      phone:     document.getElementById('customerPhone').value.trim(),
+      email:     document.getElementById('customerEmail').value.trim(),
+      address:   document.getElementById('customerAddress').value.trim(),
+      quantity:  document.getElementById('quantity').value,
+      notes:     document.getElementById('notes').value.trim()
+    };
+
+    const product = PRODUCTS.find(p => p.id === Number(data.productId));
+    const total = product.price * Number(data.quantity);
+
+    alert(
+      `✅ ĐẶT HÀNG THÀNH CÔNG!\n\n` +
+      `Sản phẩm: ${product.name}\n` +
+      `Số lượng: ${data.quantity}\n` +
+      `Tổng tiền: ${formatPrice(total)}\n\n` +
+      `Khách hàng: ${data.name}\n` +
+      `SĐT: ${data.phone}\n` +
+      `Email: ${data.email}\n` +
+      `Địa chỉ: ${data.address}\n\n` +
+      `Chúng tôi sẽ liên hệ xác nhận trong thời gian sớm nhất!`
+    );
+
+    this.form.reset();
+    this.close();
+  }
+};
+
+/* ============================================================
+   6. BACK TO TOP
+   ============================================================ */
+function updateBackToTop() {
+  const btn = document.getElementById('backToTop');
+  if (window.scrollY > 400) btn.classList.add('show');
+  else btn.classList.remove('show');
+}
+
+window.addEventListener('scroll', updateBackToTop);
+
+document.getElementById('backToTop').addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+/* ============================================================
+   7. EVENT DELEGATION (nút đặt hàng)
+   ============================================================ */
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('[data-action="order"]');
+  if (!btn) return;
+  e.preventDefault();
+  OrderModal.open(btn.getAttribute('data-id'));
+});
+
+/* ============================================================
+   8. KHỞI ĐỘNG
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+  MobileMenu.init();
+  OrderModal.init();
+  Router.init();
+});
+</script>
+</body>
+</html>
